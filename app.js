@@ -1,13 +1,12 @@
-module.exports = {
+module.exports = function bowlingScoreCalc() {
 
-  currentScore: 0,
+  this.currentScore = 0;
 
-  frame: frameTracker.length,
+  this.frame = this.frameTracker.length;
 
-  frameTracker: [],
+  this.frameTracker = [];
 
-  bowlingScore: function(firstDownPins, secondDownPins) {
-    this.frameTracker.push([firstDownPins, secondDownPins]);
+  this.bowlingScore = function(pinList) {
 
     frameTracker.reduce(function(firstFrame, nextFrame) {
       if (firstFrame[0].length === 10) {
@@ -19,20 +18,13 @@ module.exports = {
       }
     });
 
+  };
 
-    console.log('current score: ' + this.currentScore);
-    console.log('current frame: ' + this.frame);
-    console.log('frameTracker: ' + this.frameTracker);
-  },
+  this.spare = function(currentScore, nextBowl) {
 
-  spare: function(currentScore, nextBowl) {
+  };
 
+  this.strike = function(currentScore, nextTwoBowls) {
 
-    nextBowl = this.bowlingScore;
-    var previousFrameScore = currentScore + nextBowl.length + 10;
-  },
-
-  strike: function(currentScore, nextTwoBowls) {
-    var previousFrameScore = currentScore + this.bowlingScore();
-  }
+  };
 };
